@@ -458,7 +458,7 @@ requestAnimationFrame(() => {
       },
       options: {
         responsive: true, maintainAspectRatio: false,
-        layout: { padding: { top: 18, bottom: 14 } },
+        layout: { padding: { top: 30, bottom: 14 } },
         interaction: { mode: 'index', intersect: false },
         plugins: {
           legend: { display: false },
@@ -480,7 +480,8 @@ requestAnimationFrame(() => {
           y: {
             grid: { color: '#eef0ee' },
             ticks: { font: { family: 'JetBrains Mono', size: 11 }, color: '#9aaa9a' },
-            beginAtZero: true
+            beginAtZero: true,
+            grace: '12%'
           }
         }
       }
