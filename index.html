@@ -434,7 +434,12 @@ requestAnimationFrame(() => {
             pointBackgroundColor: '#fff', pointBorderColor: '#1a56db',
             pointBorderWidth: 2.5, tension: 0.3, fill: true,
             datalabels: {
-              align: 'top', anchor: 'end', offset: 6,
+              anchor: 'center', offset: 8,
+              align: (ctx) => {
+                const other = ctx.chart.data.datasets[1].data[ctx.dataIndex];
+                const self = ctx.dataset.data[ctx.dataIndex];
+                return self >= other ? 'top' : 'bottom';
+              },
               color: '#1a56db',
               font: { family: 'JetBrains Mono', weight: '700', size: 10.5 },
               formatter: v => v
@@ -448,7 +453,12 @@ requestAnimationFrame(() => {
             pointBackgroundColor: '#fff', pointBorderColor: '#d04a00',
             pointBorderWidth: 2, tension: 0.3, fill: false,
             datalabels: {
-              align: 'bottom', anchor: 'start', offset: 6,
+              anchor: 'center', offset: 8,
+              align: (ctx) => {
+                const other = ctx.chart.data.datasets[0].data[ctx.dataIndex];
+                const self = ctx.dataset.data[ctx.dataIndex];
+                return self > other ? 'top' : 'bottom';
+              },
               color: '#d04a00',
               font: { family: 'JetBrains Mono', weight: '700', size: 10.5 },
               formatter: v => v
@@ -458,7 +468,7 @@ requestAnimationFrame(() => {
       },
       options: {
         responsive: true, maintainAspectRatio: false,
-        layout: { padding: { top: 30, bottom: 14 } },
+        layout: { padding: { top: 30, bottom: 20 } },
         interaction: { mode: 'index', intersect: false },
         plugins: {
           legend: { display: false },
